@@ -1,0 +1,154 @@
+Part 1 - Understanding the Business Problem
+
+1. What is the business problem?
+The business problem is detecting fraudulent credit card transactions while still allowing the valid transactions to go through. Financial
+companies process many transactions on a day to day basis making it difficult to go through every individual transaction and detect possible
+fraud. Fradulent transactions are also more uncommon than legitimate transactions making them much harder to identify. AI and machine
+learning could help identify patterns in transaction data and flag any suspicious transactions for more in depth review.
+
+2. Why is the problem important to the organization?
+Fraud detection is crucial because these fradulent transactions could cause losses for both the financial companies and their customers. An
+institution needs to identify any suspicious activity first before any additional fradulent transactions occur. At the same time, it is also
+crucial to not incorrectly flag too many legitimate purchases as fraud since that can be an inconvenience to the customers. An effective 
+fraud detection system can help an organization reduce financial risk while also protecting their customers. AI usage could make this 
+process more efficient by analyzing large amounts of customer transaction data faster than analyzing them individualy. 
+
+3. Who is affected by this problem?
+The main groups affected by credit card fraud are financial companies, their customers and employees. Customers can be affected when
+unauthorized purchases are made using their credit cards and when valid transactions are incorrectly flagged. Fraud prevention teams are
+responsible for investigating suspicious transactions and limiting financial losses. Customer service employees might also have to help
+customers resolve fraudulent charges or blocked transactions. Managers are affected because they have to balance fraud prevention, operating 
+costs, financial risk, and the overall customer experience.
+____________________________________________________________________________________________________________________________________________
+
+Part 2 - Identifying the Data
+
+1. What data is needed?
+I would need data from past credit card transactions. This includes the transaction amount, when the transaction occurred, information about
+the transaction, and whether it was fraudulent or legitimate. The AI would need examples of both normal and fraudulent transactions so it 
+can learn the differences between them.
+
+2. Where could the data come from?
+The data could come from banks, credit card companies, and payment processing systems that keep records of customer transactions. For this
+project, I would use the Credit Card Fraud Detection dataset from Kaggle (https://www.kaggle.com/datasets/mlg-ulb/creditcardfraud), 
+which contains real credit card transaction data.
+
+3. How much historical data might be useful?
+A large amount of historical transaction data would be useful because fraud happens much less often than normal transactions. The Kaggle
+dataset contains 284,807 transactions, with only 492 identified as fraud. Having many transactions gives the AI more examples to learn from
+and helps it recognize unusual patterns.
+
+4. What would be the most important variables?
+Some of the most important variables would be the transaction amount, time of the transaction, patterns within the transaction data, and
+whether the transaction was actually fraudulent. The Kaggle dataset includes: Time, Amount, V1-V28, and Class. V1-V28 are anonymized
+features, and Class dentifies a transaction as fraudulent or legitimate.
+
+5. What could be missing or inaccurate?
+Some useful information may be missing because the Kaggle dataset protects customers' privacy. For example, it does not provide clear
+details such as the customer's identity, merchant, purchase location, or type of purchase. There could also be transactions labeled as
+legitimate that were actually fraudulent but were never reported or detected.
+____________________________________________________________________________________________________________________________________________
+
+Part 3 - Identifying Features and Target
+
+What information would you give the model?
+The features are the pieces of information the AI would examine to find patterns that could indicate fraud. Based on the Kaggle dataset, I 
+would use:
+1. Transaction amount – How much money was spent in the transaction.
+2. Transaction time – When the transaction occurred compared to other transactions.
+3. Transaction patterns (V1–V28) – The anonymized characteristics provided in the dataset that can help the model recognize unusual activity.
+4. Changes in spending behavior – Whether a transaction appears different from the customer's normal spending patterns.
+5. Transaction frequency – How frequently transactions are being made within a certain period.
+6. Unusual transaction activity – Patterns in the available transaction data that are different from typical legitimate transactions.
+
+What would you want the model to determine?
+Target/Output:
+The model would determine whether a credit card transaction is fraudulent or legitimate.
+Fraudulent transaction: Yes/No
+In the Kaggle dataset, this corresponds to the Class variable: 1 = fraud and 0 = legitimate.
+____________________________________________________________________________________________________________________________________________
+
+Part 4 - AI/ML Approach
+
+1. Would you use supervised or unsupervised learning?
+☑ Supervised Learning
+☐ Unsupervised Learning
+☐ Not sure
+
+I would use supervised learning because the historical transaction data already tells us whether each transaction was fraudulent or
+correct. The model can learn from these labeled examples and look for patterns that are usually connected to fraud. It would compare
+information such as the transaction amount, time, and other transaction features. Once trained, the model could use what it learned to
+examine new transactions. This makes supervised learning a good approach because there is already a known result for the model to learn from.
+
+2. Would the problem involve classification or prediction?
+☑ Classification
+☐ Prediction
+☐ Both
+☐ Neither
+
+I would use classification because the goal is to place each transaction into one of two categories: fraudulent or legitimate. The model
+would analyze the features of a transaction and decide which category it most likely belongs to. In the Kaggle dataset, the categories are
+represented by 1 for fraud and 0 for a legitimate transaction. The model is not trying to predict a continuous number such as a future price
+or sales amount. Instead, it's making a decision between two possible classes.
+____________________________________________________________________________________________________________________________________________
+
+Part 5 - Data Quality and Business Impact
+
+Identify three possible data-quality problems:
+1. Missing information – Some transactions could be missing useful details that would help identify fraud.
+2. Incorrect labels – A fraudulent transaction could accidentally be recorded as legitimate, or a legitimate transaction could be marked as
+fraud.
+3. Biased data – Since fraudulent transactions are more uncommon than legitimate ones, the dataset could make it harder for the model to
+learn how to recognize fraud correctly.
+
+2. What could happen if the data is poor?
+If the data is poor, the AI model might have trouble accurately identifying the transactions that are fradulent. For example, it might allow
+fraudulent purchases to go through or incorrectly flag normal purchases as fraud. This could cause financial losses for the organization and
+create problems for customers whose legitimate transactions are blocked. Poor results might also cause employees to spend more time reviewing
+transactions that were incorrectly flagged. Overall, the quality of the model mostly depends on having accurate and reliable data to learn
+from.
+____________________________________________________________________________________________________________________________________________
+
+Part 6 - AI Solution Summary
+
+Business Problem
+A financial company wants to identify fraudulent credit card transactions before they cause financial losses. Since thousands of
+transactions can happen every day, manually checking every transaction is unreasonable as ut would be difficult and time-consuming. An AI 
+system could help identify transactions that show signs of possible fraud.
+
+Data Needed
+The model could use:
+- Transaction amount
+- Transaction time
+- Transaction patterns (V1–V28)
+- Changes in spending behavior
+- Transaction frequency
+- Past fraud results showing whether transactions were fraudulent or legitimate
+
+AI/ML Approach
+A machine learning model could analyze past credit card transactions and learn patterns that are connected to fraudulent activity. It could
+then use those patterns to examine new transactions and determine whether they look suspicious.
+
+Type of Learning
+Supervised learning would work well because the historical data already identifies transactions as fraudulent or legitimate. The model can
+use these known results to learn the differences between the two types of transactions.
+
+Model Output
+Classification: Fraudulent / Legitimate
+The model would classify each new credit card transaction as:
+Fraudulent → Yes
+Fraudulent → No
+
+Business Benefit
+The organization could use the model to identify suspicious transactions quicker. This would help prevent fraudulent purchases, reduce
+financial losses, and protect customers from unauthorized activity. It could also reduce the amount of time employees spend manually
+reviewing transactions.
+
+Potential Risk
+One risk is that the model could incorrectly classify a legitimate transaction as fraud and cause a customer's purchase to be blocked.
+It can also fail to recognize an actual fraudulent transaction. These mistakes could lead to unhappy customers or financial losses, so
+suspicious transactions might still need additional review.
+____________________________________________________________________________________________________________________________________________
+
+Source:
+Machine Learning Group – ULB. Credit Card Fraud Detection. Kaggle. Credit Card Fraud Detection Dataset
