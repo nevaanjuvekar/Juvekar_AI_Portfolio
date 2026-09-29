@@ -1,0 +1,116 @@
+Part 1 - Dataset
+
+1. Dataset Name: 
+Loan Approval Prediction Dataset
+
+2. Kaggle Source:
+https://www.kaggle.com/datasets/architsharma01/loan-approval-prediction-dataset
+
+3. Number of Rows:
+4,269 rows
+
+4. Number of Columns:
+13 columns
+
+5. Brief Description:
+This dataset contains information about people applying for loans. It includes financial and personal information such as annual income, 
+loan amount, loan term, credit score, education, employment status, number of dependents, and the value of different assets. It also shows
+whether each person's loan was approved or rejected.
+
+6. What I Want My Model to Predict:
+I want to use Logistic Regression to predict whether a person's loan application will be approved or rejected based on their financial and
+personal information.
+____________________________________________________________________________________________________________________________________________
+
+Part 2 - Understanding the Dataset
+
+1. What does each row represent?
+Each row represents one person who applied for a loan. The row contains information about that person's finances and whether their loan
+was approved or rejected. The dataset has 4,269 loan applications in total.
+
+2. What are the important columns?
+Some of the most important columns are:
+- income_annum – the applicant’s yearly income
+- loan_amount – how much money they are asking to borrow
+- loan_term – how long they have to repay the loan
+- cibil_score – the applicant’s credit score
+- education – whether the applicant graduated or not
+- self_employed – whether the applicant is self-employed
+- no_of_dependents – how many dependents the applicant has
+- residential_assets_value – value of residential assets
+- commercial_assets_value – value of commercial assets
+- luxury_assets_value – value of luxury assets
+- bank_asset_value – value of bank assets
+- loan_status – whether the loan was approved or rejected
+
+3. Which columns could be useful for making predictions?
+I think columns such as income, loan amount, loan term, CIBIL score, employment status, number of dependents, and asset values could be
+useful. These give the model information about the applicant’s financial situation and could help it find patterns connected to loan 
+approval.
+
+4. What is your target variable?
+My target variable is loan_status. This is what I want the Logistic Regression model to predict. It has two possible outcomes: Approved or
+Rejected.
+
+5. How many observations belong to each target class?
+There are:
+- Approved: 2,656
+- Rejected: 1,613
+This adds up to all 4,269 observations in the dataset.
+
+6. Are there missing values?
+No. The dataset does not have any missing values. All 13 columns have 4,269 non-null (database table cells that contain an actual, known
+value) entries.
+
+7. Are there any columns that should not be used for prediction? Explain why.
+Yes. I would not use loan_id to make predictions. This column is only a unique number that's used to identify each loan application. It 
+doesn't actually tell us anything about the applicant’s financial situation, so it wouldn't be useful for predicting whether a loan gets 
+approved or rejected.
+____________________________________________________________________________________________________________________________________________
+
+Part 4 - Preparing the Data
+
+Before using the dataset for Logistic Regression, I would prepare the data so that the model can properly understand and use it.
+
+Missing Values:
+I checked the dataset for missing values and found that there were no missing values. Because of this, I did not need to remove any rows or
+fill in any missing information.
+
+Categorical Variables:
+Some columns contain categories instead of numbers. These include education, self_employed, and loan_status. Since Logistic Regression works
+with numerical data, I would convert these categories into numbers. For example, self_employed could be changed to 1 for Yes and 0 for No. 
+The target variable loan_status could also be changed to 1 for Approved and 0 for Rejected.
+
+Non-Numeric Information:
+The main non-numeric information comes from the categorical columns mentioned above. I would change these values into numbers so they can be
+used by the model. I would make sure the original meaning of each category stays the same after converting it.
+
+Duplicate Records:
+I would check the dataset for duplicate rows before training the model. If I found any exact duplicates, I would remove them because having
+the same row more than once could affect the model and give certain observations more importance than they should have.
+
+Unnecessary Columns:
+I would remove the loan_id column before training the model. This column is only used to identify each loan application and does not provide
+useful financial information about the applicant. Including it could add unnecessary information to the model.
+
+Other Data-Quality Issues:
+I would also check the numerical columns for unusual or incorrect values. For example, I would look for negative values where they would not
+make sense, such as a negative income or loan amount. I would also make sure the data types are correct and that categorical values are
+written consistently.
+____________________________________________________________________________________________________________________________________________
+
+Part 5 - Training and Testing Data
+
+I would divide the dataset into 80% training data and 20% testing data.
+Training Data: 80% — about 3,415 loan applications
+Testing Data: 20% — about 854 loan applications
+
+The training data is used to teach the Logistic Regression model and help it find patterns between the applicant information and whether the
+loan was approved or rejected.
+
+It is important to keep the testing data separate because the model should be tested on data that it has not seen before. If I tested the
+model using the same data it was trained on, the results could make the model look more accurate than it actually is. Using separate testing
+data gives me a better idea of how well the model would perform on new loan applications.
+
+I chose an 80/20 split because it gives the model plenty of data to learn from while still having enough data to accurately test its 
+performance.
