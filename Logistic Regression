@@ -13,7 +13,7 @@ https://www.kaggle.com/datasets/architsharma01/loan-approval-prediction-dataset
 13 columns
 
 5. Brief Description:
-This dataset contains information about people applying for loans. It includes financial and personal information such as annual income, 
+This dataset includes information about people applying for loans. It contains financial and personal information such as annual income, 
 loan amount, loan term, credit score, education, employment status, number of dependents, and the value of different assets. It also shows
 whether each person's loan was approved or rejected.
 
@@ -112,5 +112,96 @@ It is important to keep the testing data separate because the model should be te
 model using the same data it was trained on, the results could make the model look more accurate than it actually is. Using separate testing
 data gives me a better idea of how well the model would perform on new loan applications.
 
-I chose an 80/20 split because it gives the model plenty of data to learn from while still having enough data to accurately test its 
+I chose an 80/20 split because it gives the model lots of data to learn from while still having enough data to accurately test its 
 performance.
+____________________________________________________________________________________________________________________________________________
+
+Part 6 - Building the Logistic Regression Model
+
+https://colab.research.google.com/drive/1M9-BR8dpixAeE6ro9Aa1-icQjBsNT4B5?usp=sharing
+
+What is Logistic Regression and why is it appropriate for my problem?
+- Logistic Regression is a machine learning method that's used to predict between two possible outcomes. It looks at the information in the
+  dataset and uses patterns in that information to predict which of the two outcomes is more likely.
+- Logistic Regression works well for my dataset because I am trying to predict whether a loan application will be approved or rejected. 
+  Since there are only two possible outcomes, this is a binary classification problem. The model can use information such as income, loan
+  amount, credit score, employment status, and asset values to help predict whether a loan will be approved or rejected.
+____________________________________________________________________________________________________________________________________________
+
+Part 7: Evaluating the Model
+
+Accuracy
+My Logistic Regression model had an accuracy of about 79.86%. This means that the model correctly predicted whether a loan was approved or
+rejected about 80% of the time.
+
+Confusion Matrix
+My confusion matrix was:
+
+                    | P.R | P.A |
+| Actually Rejected | 194 | 124 |
+| Actually Approved | 48  | 488 |
+
+(P.R = Predicted Rejected)
+(P.A = Predicted Approved)
+
+From this confusion matrix:
+- True Positives (TP): 488 — The model predicted that the loan would be approved, and it was actually approved.
+- True Negatives (TN): 194 — The model predicted that the loan would be rejected, and it was actually rejected.
+- False Positives (FP): 124 — The model predicted that the loan would be approved, but it was actually rejected.
+- False Negatives (FN): 48 — The model predicted that the loan would be rejected, but it was actually approved.
+
+Precision
+For predicting approved loans, my model had a precision of 0.80, or 80%. This means that when my model predicted that a loan would be
+approved, it was correct about 80% of the time.
+
+Recall
+The recall for approved loans was 0.91, or 91%. This means that my model correctly identified about 91% of all the loans that were actually
+approved.
+
+F1-Score
+The F1-score for approved loans was 0.85, or 85%. The F1-score combines precision and recall into one measurement, so it gives me an idea of
+how well the model balances both.
+
+Which metric is most important for this problem, and why?
+For my loan approval problem, I think precision is especially important. A false positive would mean that the model predicts that a loan
+should be approved when it was actually rejected. For a financial institution, incorrectly approving a loan could create financial risk.
+Because of this, I would want the model to be accurate when it predicts that an applicant should be approved.
+____________________________________________________________________________________________________________________________________________
+
+Part 8 - Make a New Prediction
+
+For my new observation, I created a hypothetical loan applicant who has a $90,000 yearly income, a $150,000 loan amount, a 5-year loan term,
+and a CIBIL score of 750. The applicant is a graduate, is not self-employed, has one dependent, and has different residential, commercial,
+luxury, and bank assets.
+
+After entering this information into my trained Logistic Regression model, the model predicted that the applicant's loan would be Approved.
+
+The model gave this prediction a probability of about 77.01%. This means that based on the patterns the model learned from the training data,
+it estimates about a 77% probability that this applicant belongs to the Approved class. This does not guarantee that the loan would actually
+be approved, but it shows the confidence the model has is in its prediction.
+____________________________________________________________________________________________________________________________________________
+
+Part 9: Reflection
+
+1. What did the model predict?
+For the new loan applicant I created, my model predicted that the loan would be approved. It gave the prediction about a 77.01% probability
+of being approved.
+
+2. How well did the model perform?
+Overall, I think my model performed fairly well. It had an accuracy of about 79.86%, meaning it correctly predicted around 80% of the loan
+applications in the testing data.
+
+3. What did you learn from the confusion matrix?
+The confusion matrix showed me that the model made 682 correct predictions and 172 incorrect predictions. It correctly predicted 488
+approved loans and 194 rejected loans. However, it also predicted 124 rejected loans as approved and 48 approved loans as rejected. This
+showed me that the model was better at identifying approved loans than rejected loans.
+
+4. What are two limitations of your model?
+One limitation is that the model is not completely accurate, so some applicants could be classified incorrectly. Another limitation is that
+the model can only learn from the information included in this dataset. There could be other important factors that affect loan approval
+that are not included in the data.
+
+5. If you had more time, what would you do to improve the model?
+If I had more time, I would try different combinations of features and adjust the Logistic Regression model to see if I could improve its
+performance. I would also compare Logistic Regression with other machine learning models to see if another model could make more accurate
+predictions.
